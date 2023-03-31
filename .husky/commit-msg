@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# npx --no-install commitlint -e $GIT_PARAMS
+npx.cmd --no-install commitlint -e $GIT_PARAMS
