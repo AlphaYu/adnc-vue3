@@ -21,10 +21,9 @@ const transform: AxiosTransform = {
 
     // 如果204无内容直接返回
     const method = res.config.method?.toLowerCase();
-    if (res.status === 204 || method === 'put' || method === 'patch') {
+    if (res.status === 201 || res.status === 204 || method === 'put' || method === 'patch') {
       return res;
     }
-
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     if (isReturnNativeResponse) {
       return res;
@@ -111,6 +110,7 @@ const transform: AxiosTransform = {
   // 请求拦截器处理
   requestInterceptors: (config, options) => {
     // 请求之前处理config
+    // console.log(window.localStorage);
     const token = localStorage.getItem(TOKEN_NAME);
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
@@ -157,7 +157,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
         // 超时
         timeout: 10 * 1000,
         // 携带Cookie
-        withCredentials: true,
+        withCredentials: false,
         // 头信息
         headers: { 'Content-Type': ContentTypeEnum.Json },
         // 数据处理方式

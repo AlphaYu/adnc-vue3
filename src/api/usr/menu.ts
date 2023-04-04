@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { request } from '@/utils/request';
 import {
   getUsrMenusMenutreeByRoleIdResponse,
@@ -5,16 +6,17 @@ import {
   getUsrMenusRoutersResponse,
   postUsrMenusRequest,
 } from '../model/usr/menuModel';
+import { UriString } from '@/utils/string';
 
 // 菜单管理
 const Api = {
-  PostUsrMenus: 'post-usr-menus',
-  GetUsrMenus: 'get-usr-menus',
-  GetUsrMenusRouters: 'get-usr-menus-routers',
+  PostUsrMenus: new UriString('post-usr-menus'),
+  GetUsrMenus: new UriString('get-usr-menus'),
+  GetUsrMenusRouters: new UriString('get-usr-menus-routers'),
 
-  PutUsrMenusById: (id: number) => `put-usr-menus-${id}`,
-  DeleteUsrMenusById: (id: number) => `delete-usr-menus-${id}`,
-  GetUsrMenusMenutreeByRoleId: (roleId: number) => `get-usr-menus-${roleId}-menutree`,
+  PutUsrMenusById: (id: number) => new UriString(`put-usr-menus-${id}`),
+  DeleteUsrMenusById: (id: number) => new UriString(`delete-usr-menus-${id}`),
+  GetUsrMenusMenutreeByRoleId: (roleId: number) => new UriString(`get-usr-menus-${roleId}-menutree`),
 };
 
 /**
@@ -23,7 +25,7 @@ const Api = {
  */
 export function postUsrMenus(param: postUsrMenusRequest) {
   return request.post<void>({
-    url: Api.PostUsrMenus,
+    uri: Api.PostUsrMenus,
     data: param,
   });
 }
@@ -32,8 +34,8 @@ export function postUsrMenus(param: postUsrMenusRequest) {
  * @returns
  */
 export function getUsrMenus() {
-  return request.get<Array<getUsrMenusResponse>>({
-    url: Api.GetUsrMenus,
+  return request.get<AxiosResponse<Array<getUsrMenusResponse>>>({
+    uri: Api.GetUsrMenus,
   });
 }
 /**
@@ -42,7 +44,7 @@ export function getUsrMenus() {
  */
 export function putUsrMenusById(id: number, param: postUsrMenusRequest) {
   return request.put<void>({
-    url: Api.PutUsrMenusById(id),
+    uri: Api.PutUsrMenusById(id),
     data: param,
   });
 }
@@ -52,7 +54,7 @@ export function putUsrMenusById(id: number, param: postUsrMenusRequest) {
  */
 export function deleteUsrMenusById(id: number) {
   return request.delete<void>({
-    url: Api.DeleteUsrMenusById(id),
+    uri: Api.DeleteUsrMenusById(id),
   });
 }
 /**
@@ -60,8 +62,8 @@ export function deleteUsrMenusById(id: number) {
  * @returns
  */
 export function getUsrMenusRouters() {
-  return request.get<Array<getUsrMenusRoutersResponse>>({
-    url: Api.GetUsrMenusRouters,
+  return request.get<AxiosResponse<Array<getUsrMenusRoutersResponse>>>({
+    uri: Api.GetUsrMenusRouters,
   });
 }
 /**
@@ -69,7 +71,7 @@ export function getUsrMenusRouters() {
  * @returns
  */
 export function getUsrMenusMenutreeByRoleId(roleId: number) {
-  return request.get<getUsrMenusMenutreeByRoleIdResponse>({
-    url: Api.GetUsrMenusMenutreeByRoleId(roleId),
+  return request.get<AxiosResponse<getUsrMenusMenutreeByRoleIdResponse>>({
+    uri: Api.GetUsrMenusMenutreeByRoleId(roleId),
   });
 }

@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { request } from '@/utils/request';
 import {
   getUsrRolesPageRequest,
@@ -7,16 +8,17 @@ import {
   putUsrRolesIdPermissonsResponse,
   putUsrRolesIdRequest,
 } from '../model/usr/roleModel';
+import { UriString } from '@/utils/string';
 
 // 角色管理
 const Api = {
-  PostUsrRoles: 'post-usr-roles',
-  GetUsrRolesPage: 'get-usr-roles-page',
+  PostUsrRoles: new UriString('post-usr-roles'),
+  GetUsrRolesPage: new UriString('get-usr-roles-page'),
 
-  PutUsrRolesId: (id: number) => `put-usr-roles-${id}`,
-  DeleteUsrRolesId: (id: number) => `delete-usr-roles-${id}`,
-  PutUsrRolesIdPermissons: (id: number) => `put-usr-roles-${id}-permissons`,
-  GetUsrRolesUserIdRolestree: (userId: number) => `get-usr-roles-${userId}-rolestree`,
+  PutUsrRolesId: (id: number) => new UriString(`put-usr-roles-${id}`),
+  DeleteUsrRolesId: (id: number) => new UriString(`delete-usr-roles-${id}`),
+  PutUsrRolesIdPermissons: (id: number) => new UriString(`put-usr-roles-${id}-permissons`),
+  GetUsrRolesUserIdRolestree: (userId: number) => new UriString(`get-usr-roles-${userId}-rolestree`),
 };
 
 /**
@@ -24,8 +26,8 @@ const Api = {
  * @returns
  */
 export function getUsrRolesPage(param: getUsrRolesPageRequest) {
-  return request.get<getUsrRolesPageResponse>({
-    url: Api.GetUsrRolesPage,
+  return request.get<AxiosResponse<getUsrRolesPageResponse>>({
+    uri: Api.GetUsrRolesPage,
     data: param,
   });
 }
@@ -34,8 +36,8 @@ export function getUsrRolesPage(param: getUsrRolesPageRequest) {
  * @returns
  */
 export function getUsrRolesUserIdRolestree(userId: number) {
-  return request.get<getUsrRolesUserIdRolestreeResponse>({
-    url: Api.GetUsrRolesUserIdRolestree(userId),
+  return request.get<AxiosResponse<getUsrRolesUserIdRolestreeResponse>>({
+    uri: Api.GetUsrRolesUserIdRolestree(userId),
   });
 }
 /**
@@ -44,7 +46,7 @@ export function getUsrRolesUserIdRolestree(userId: number) {
  */
 export function deleteUsrRolesId(id: number) {
   return request.delete<void>({
-    url: Api.DeleteUsrRolesId(id),
+    uri: Api.DeleteUsrRolesId(id),
   });
 }
 /**
@@ -53,7 +55,7 @@ export function deleteUsrRolesId(id: number) {
  */
 export function putUsrRolesId(id: number, param: putUsrRolesIdRequest) {
   return request.put<void>({
-    url: Api.PutUsrRolesId(id),
+    uri: Api.PutUsrRolesId(id),
     data: param,
   });
 }
@@ -62,8 +64,8 @@ export function putUsrRolesId(id: number, param: putUsrRolesIdRequest) {
  * @returns
  */
 export function putUsrRolesIdPermissons(id: number) {
-  return request.put<putUsrRolesIdPermissonsResponse>({
-    url: Api.PutUsrRolesIdPermissons(id),
+  return request.put<AxiosResponse<putUsrRolesIdPermissonsResponse>>({
+    uri: Api.PutUsrRolesIdPermissons(id),
   });
 }
 /**
@@ -72,7 +74,7 @@ export function putUsrRolesIdPermissons(id: number) {
  */
 export function postUsrRoles(param: postUsrRolesRequest) {
   return request.post<void>({
-    url: Api.PostUsrRoles,
+    uri: Api.PostUsrRoles,
     data: param,
   });
 }

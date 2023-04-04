@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { request } from '@/utils/request';
 import {
   getUsrUsersCurrentResponse,
@@ -11,20 +12,21 @@ import {
   putUsrUsersIdRolesRequest,
   putUsrUsersIdStatusRequest,
 } from '../model/usr/userModel';
+import { UriString } from '@/utils/string';
 
 // 用户管理
 const Api = {
-  PostUsrUsers: 'post-usr-users',
+  PostUsrUsers: new UriString('post-usr-users'),
 
-  PutUsrUsersId: (id: number) => `put-usr-users-${id}`,
-  DeleteUsrUsersId: (id: number) => `delete-usr-users-${id}`,
-  PutUsrUsersIdRoles: (id: number) => `put-usr-users-${id}-roles`,
-  PutUsrUsersIdStatus: (id: number) => `put-usr-users-${id}-status`,
-  GetUsrUsersIdPermissions: (id: number) => `get-usr-users-${id}-permissions`,
+  PutUsrUsersId: (id: number) => new UriString(`put-usr-users-${id}`),
+  DeleteUsrUsersId: (id: number) => new UriString(`delete-usr-users-${id}`),
+  PutUsrUsersIdRoles: (id: number) => new UriString(`put-usr-users-${id}-roles`),
+  PutUsrUsersIdStatus: (id: number) => new UriString(`put-usr-users-${id}-status`),
+  GetUsrUsersIdPermissions: (id: number) => new UriString(`get-usr-users-${id}-permissions`),
 
-  PutUsrUsersBatchStatus: 'put-usr-users-batch-status',
-  GetUsrUsersPage: 'get-usr-users-page',
-  GetUsrUsersCurrent: 'get-usr-users-current',
+  PutUsrUsersBatchStatus: new UriString('put-usr-users-batch-status'),
+  GetUsrUsersPage: new UriString('get-usr-users-page'),
+  GetUsrUsersCurrent: new UriString('get-usr-users-current'),
 };
 
 /**
@@ -33,7 +35,7 @@ const Api = {
  */
 export function postUsrUsers(param: postUsrUsersRequest) {
   return request.get<void>({
-    url: Api.PostUsrUsers,
+    uri: Api.PostUsrUsers,
     data: param,
   });
 }
@@ -42,8 +44,8 @@ export function postUsrUsers(param: postUsrUsersRequest) {
  * @returns
  */
 export function putUsrUsersId(id: number, param: putUsrUsersIdRequest) {
-  return request.get<object>({
-    url: Api.PutUsrUsersId(id),
+  return request.get<void>({
+    uri: Api.PutUsrUsersId(id),
     data: param,
   });
 }
@@ -53,7 +55,7 @@ export function putUsrUsersId(id: number, param: putUsrUsersIdRequest) {
  */
 export function deleteUsrUsersId(id: number) {
   return request.get<void>({
-    url: Api.DeleteUsrUsersId(id),
+    uri: Api.DeleteUsrUsersId(id),
   });
 }
 /**
@@ -62,7 +64,7 @@ export function deleteUsrUsersId(id: number) {
  */
 export function putUsrUsersIdRoles(id: number, param: putUsrUsersIdRolesRequest) {
   return request.get<void>({
-    url: Api.PutUsrUsersIdRoles(id),
+    uri: Api.PutUsrUsersIdRoles(id),
     data: param,
   });
 }
@@ -72,7 +74,7 @@ export function putUsrUsersIdRoles(id: number, param: putUsrUsersIdRolesRequest)
  */
 export function putUsrUsersIdStatus(id: number, param: putUsrUsersIdStatusRequest) {
   return request.get<void>({
-    url: Api.PutUsrUsersIdStatus(id),
+    uri: Api.PutUsrUsersIdStatus(id),
     data: param,
   });
 }
@@ -82,7 +84,7 @@ export function putUsrUsersIdStatus(id: number, param: putUsrUsersIdStatusReques
  */
 export function putUsrUsersBatchStatus(param: putUsrUsersBatchStatusRequest) {
   return request.get<void>({
-    url: Api.PutUsrUsersBatchStatus,
+    uri: Api.PutUsrUsersBatchStatus,
     data: param,
   });
 }
@@ -91,8 +93,8 @@ export function putUsrUsersBatchStatus(param: putUsrUsersBatchStatusRequest) {
  * @returns
  */
 export function getUsrUsersIdPermissions(id: number, param: getUsrUsersIdPermissionsRequest) {
-  return request.get<getUsrUsersIdPermissionsResponse>({
-    url: Api.GetUsrUsersIdPermissions(id),
+  return request.get<AxiosResponse<getUsrUsersIdPermissionsResponse>>({
+    uri: Api.GetUsrUsersIdPermissions(id),
     data: param,
   });
 }
@@ -101,8 +103,8 @@ export function getUsrUsersIdPermissions(id: number, param: getUsrUsersIdPermiss
  * @returns
  */
 export function getUsrUsersPage(param: getUsrUsersPageRequest) {
-  return request.get<getUsrUsersPageResponse>({
-    url: Api.GetUsrUsersPage,
+  return request.get<AxiosResponse<getUsrUsersPageResponse>>({
+    uri: Api.GetUsrUsersPage,
     params: param,
   });
 }
@@ -111,7 +113,7 @@ export function getUsrUsersPage(param: getUsrUsersPageRequest) {
  * @returns
  */
 export function getUsrUsersCurrent() {
-  return request.get<getUsrUsersCurrentResponse>({
-    url: Api.GetUsrUsersCurrent,
+  return request.get<AxiosResponse<getUsrUsersCurrentResponse>>({
+    uri: Api.GetUsrUsersCurrent,
   });
 }

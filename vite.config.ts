@@ -10,7 +10,7 @@ const CWD = process.cwd();
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
-  const { VITE_BASE_URL, VITE_API_URL_PREFIX } = loadEnv(mode, CWD);
+  const { VITE_BASE_URL, VITE_API_URL_PREFIX, VITE_API_URL } = loadEnv(mode, CWD);
   return {
     base: VITE_BASE_URL,
     resolve: {
@@ -42,10 +42,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     ],
 
     server: {
-      port: 3002,
+      port: 50001,
       host: '0.0.0.0',
       proxy: {
-        [VITE_API_URL_PREFIX]: 'http://127.0.0.1:3000/',
+        [VITE_API_URL + VITE_API_URL_PREFIX]: 'http://127.0.0.1:3000/',
       },
     },
   };

@@ -6,6 +6,7 @@ import { CreateAxiosOptions } from './AxiosTransform';
 import { AxiosCanceler } from './AxiosCancel';
 import { AxiosRequestConfigRetry, RequestOptions, Result } from '@/types/axios';
 import { ContentTypeEnum } from '@/constants';
+import { VAxiosRequestConfig } from '@/api/model/uriModel';
 
 // Axios模块
 export class VAxios {
@@ -116,24 +117,29 @@ export class VAxios {
     };
   }
 
-  get<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'GET' }, options);
+  get<T = any>(requestConfig: VAxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    requestConfig.url = requestConfig.url || requestConfig.uri.toUriFormat().value;
+    return this.request({ ...requestConfig, method: 'GET' }, options);
   }
 
-  post<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'POST' }, options);
+  post<T = any>(requestConfig: VAxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    requestConfig.url = requestConfig.url || requestConfig.uri.toUriFormat().value;
+    return this.request({ ...requestConfig, method: 'POST' }, options);
   }
 
-  put<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'PUT' }, options);
+  put<T = any>(requestConfig: VAxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    requestConfig.url = requestConfig.url || requestConfig.uri.toUriFormat().value;
+    return this.request({ ...requestConfig, method: 'PUT' }, options);
   }
 
-  delete<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'DELETE' }, options);
+  delete<T = any>(requestConfig: VAxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    requestConfig.url = requestConfig.url || requestConfig.uri.toUriFormat().value;
+    return this.request({ ...requestConfig, method: 'DELETE' }, options);
   }
 
-  patch<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    return this.request({ ...config, method: 'PATCH' }, options);
+  patch<T = any>(requestConfig: VAxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    requestConfig.url = requestConfig.url || requestConfig.uri.toUriFormat().value;
+    return this.request({ ...requestConfig, method: 'PATCH' }, options);
   }
 
   // 请求

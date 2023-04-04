@@ -1,3 +1,4 @@
+import { AxiosResponse } from 'axios';
 import { request } from '@/utils/request';
 import {
   getAuthSessionResponse,
@@ -7,22 +8,24 @@ import {
   putAuthSessionRequest,
   putAuthSessionResponse,
 } from '../model/usr/accountModel';
+import { UriString } from '@/utils/string';
 
 // 认证管理
 const Api = {
-  PostAuthSession: 'post-auth-session',
-  DeleteAuthSession: 'delete-auth-session',
-  PutAuthSession: 'put-auth-session',
-  GetAuthSession: 'get-auth-session',
-  PutAuthSessionPassword: 'put-auth-session-password',
+  PostAuthSession: new UriString('post-auth-session'),
+  DeleteAuthSession: new UriString('delete-auth-session'),
+  PutAuthSession: new UriString('put-auth-session'),
+  GetAuthSession: new UriString('get-auth-session'),
+  PutAuthSessionPassword: new UriString('put-auth-session-password'),
 };
+
 /**
  * 登錄
  * @returns
  */
 export function postAuthSession(param: postAuthSessionRequest) {
-  return request.post<postAuthSessionResponse>({
-    url: Api.PostAuthSession,
+  return request.post<AxiosResponse<postAuthSessionResponse>>({
+    uri: Api.PostAuthSession,
     data: param,
   });
 }
@@ -32,7 +35,7 @@ export function postAuthSession(param: postAuthSessionRequest) {
  */
 export function deleteAuthSession() {
   return request.delete<void>({
-    url: Api.DeleteAuthSession,
+    uri: Api.DeleteAuthSession,
   });
 }
 /**
@@ -40,8 +43,8 @@ export function deleteAuthSession() {
  * @returns
  */
 export function putAuthSession(param: putAuthSessionRequest) {
-  return request.put<putAuthSessionResponse>({
-    url: Api.PutAuthSession,
+  return request.put<AxiosResponse<putAuthSessionResponse>>({
+    uri: Api.PutAuthSession,
     data: param,
   });
 }
@@ -50,8 +53,8 @@ export function putAuthSession(param: putAuthSessionRequest) {
  * @returns
  */
 export function getAuthSession() {
-  return request.get<getAuthSessionResponse>({
-    url: Api.GetAuthSession,
+  return request.get<AxiosResponse<getAuthSessionResponse>>({
+    uri: Api.GetAuthSession,
   });
 }
 /**
@@ -60,7 +63,7 @@ export function getAuthSession() {
  */
 export function putAuthSessionPassword(param: putAuthSessionPasswordRequest) {
   return request.put<void>({
-    url: Api.PutAuthSessionPassword,
+    uri: Api.PutAuthSessionPassword,
     data: param,
   });
 }
