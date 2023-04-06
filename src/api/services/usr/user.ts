@@ -11,7 +11,7 @@ import {
   putUsrUsersIdRequest,
   putUsrUsersIdRolesRequest,
   putUsrUsersIdStatusRequest,
-} from '../model/usr/userModel';
+} from '../../model/usr/userModel';
 import { UriString } from '@/utils/string';
 
 // 用户管理

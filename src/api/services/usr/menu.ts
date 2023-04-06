@@ -5,7 +5,7 @@ import {
   getUsrMenusResponse,
   getUsrMenusRoutersResponse,
   postUsrMenusRequest,
-} from '../model/usr/menuModel';
+} from '../../model/usr/menuModel';
 import { UriString } from '@/utils/string';
 
 // 菜单管理

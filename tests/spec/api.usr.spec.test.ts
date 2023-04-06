@@ -1,10 +1,10 @@
 // spec | test
 import { describe, expect, it } from 'vitest';
-import { postAuthSession } from '@/api/usr/account';
+import { postAuthSession } from '@/api/service/usr/account';
 import { TOKEN_NAME } from '@/config/global';
-import { getUsrMenus } from '@/api/usr/menu';
-import { getUsrUsersCurrent } from '@/api/usr/user';
-import { getUsrRolesPage } from '@/api/usr/role';
+import { getUsrMenus } from '@/api/service/usr/menu';
+import { getUsrUsersCurrent } from '@/api/service/usr/user';
+import { getUsrRolesPage } from '@/api/service/usr/role';
 
 describe('user service test', () => {
   describe('Login', () => {

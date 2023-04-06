@@ -7,7 +7,7 @@ import {
   putAuthSessionPasswordRequest,
   putAuthSessionRequest,
   putAuthSessionResponse,
-} from '../model/usr/accountModel';
+} from '../../model/usr/accountModel';
 import { UriString } from '@/utils/string';
 
 // 认证管理

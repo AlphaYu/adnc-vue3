@@ -31,4 +31,5 @@
     "pinia",
     "qrcode"
   ],
+  "git.ignoreLimitWarning": true,
 }

@@ -7,7 +7,7 @@ import {
   postUsrRolesRequest,
   putUsrRolesIdPermissonsResponse,
   putUsrRolesIdRequest,
-} from '../model/usr/roleModel';
+} from '../../model/usr/roleModel';
 import { UriString } from '@/utils/string';
 
 // 角色管理

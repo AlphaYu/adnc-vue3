@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { TOKEN_NAME } from '@/config/global';
 import { store } from '@/store';
 import { postAuthSessionRequest } from '@/api/model/usr/accountModel';
-import { postAuthSession } from '@/api/usr/account';
+import { postAuthSession } from '@/api/service/usr/account';
 
 export const useUserStore = defineStore({
   id: 'user endpoint',
