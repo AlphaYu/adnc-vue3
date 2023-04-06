@@ -33,7 +33,6 @@ const transform: AxiosTransform = {
     if (!isTransformResponse) {
       return res.data;
     }
-
     // 错误的时候返回
     const { data } = res;
     if (!data) {
@@ -110,7 +109,6 @@ const transform: AxiosTransform = {
   // 请求拦截器处理
   requestInterceptors: (config, options) => {
     // 请求之前处理config
-    // console.log(window.localStorage);
     const token = localStorage.getItem(TOKEN_NAME);
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
@@ -153,7 +151,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
       <CreateAxiosOptions>{
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#authentication_schemes
         // 例如: authenticationScheme: 'Bearer'
-        authenticationScheme: '',
+        authenticationScheme: 'Bearer',
         // 超时
         timeout: 10 * 1000,
         // 携带Cookie
@@ -173,7 +171,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
           // urlPrefix: '/api'
           urlPrefix: import.meta.env.VITE_API_URL_PREFIX,
           // 是否返回原生响应头 比如：需要获取响应头时使用该属性
-          isReturnNativeResponse: false,
+          isReturnNativeResponse: true,
           // 需要对返回数据进行处理
           isTransformResponse: true,
           // post请求的时候添加参数到url

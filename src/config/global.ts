@@ -1,2 +1,2 @@
-export const prefix = 'tdesign-starter';
-export const TOKEN_NAME = 'tdesign-starter';
+export const prefix = 'adnc-prefix-starter';
+export const TOKEN_NAME = 'adnc-token-starter';
