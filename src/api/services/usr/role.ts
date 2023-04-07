@@ -5,7 +5,7 @@ import {
   getUsrRolesPageResponse,
   getUsrRolesUserIdRolestreeResponse,
   postUsrRolesRequest,
-  putUsrRolesIdPermissonsResponse,
+  putUsrRolesIdPermissionsResponse,
   putUsrRolesIdRequest,
 } from '../../model/usr/roleModel';
 import { UriString } from '@/utils/string';
@@ -17,7 +17,7 @@ const Api = {
 
   PutUsrRolesId: (id: number) => new UriString(`put-usr-roles-${id}`),
   DeleteUsrRolesId: (id: number) => new UriString(`delete-usr-roles-${id}`),
-  PutUsrRolesIdPermissons: (id: number) => new UriString(`put-usr-roles-${id}-permissons`),
+  PutUsrRolesIdPermissions: (id: number) => new UriString(`put-usr-roles-${id}-permissons`),
   GetUsrRolesUserIdRolestree: (userId: number) => new UriString(`get-usr-roles-${userId}-rolestree`),
 };
 
@@ -63,9 +63,9 @@ export function putUsrRolesId(id: number, param: putUsrRolesIdRequest) {
  * 保存角色权限
  * @returns
  */
-export function putUsrRolesIdPermissons(id: number) {
-  return request.put<AxiosResponse<putUsrRolesIdPermissonsResponse>>({
-    uri: Api.PutUsrRolesIdPermissons(id),
+export function putUsrRolesIdPermissions(id: number) {
+  return request.put<AxiosResponse<putUsrRolesIdPermissionsResponse>>({
+    uri: Api.PutUsrRolesIdPermissions(id),
   });
 }
 /**

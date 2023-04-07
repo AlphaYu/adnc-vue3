@@ -25,3 +25,24 @@ export class UriString {
     return this.value;
   }
 }
+/**
+ * 将对象转换为查询字符串
+ * @param obj 对象
+ * @returns
+ */
+export function toQueryFormat(obj: object): string {
+  const keyValuePairs = [];
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const value = obj[key];
+      if (Array.isArray(value)) {
+        for (const subValue of value) {
+          keyValuePairs.push(`${key}=${encodeURIComponent(subValue)}`);
+        }
+      } else {
+        keyValuePairs.push(`${key}=${encodeURIComponent(value)}`);
+      }
+    }
+  }
+  return `?${keyValuePairs.join('&')}`;
+}

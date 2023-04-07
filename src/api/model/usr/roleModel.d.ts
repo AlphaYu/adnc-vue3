@@ -59,7 +59,7 @@ export interface putUsrRolesIdRequest {
  * 保存角色权限[响应]
  * @returns
  */
-export interface putUsrRolesIdPermissonsResponse {
+export interface putUsrRolesIdPermissionsResponse {
   [index: number]: number;
 }
 
