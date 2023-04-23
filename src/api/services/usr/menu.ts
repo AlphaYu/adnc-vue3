@@ -10,13 +10,13 @@ import { UriString } from '@/utils/string';
 
 // 菜单管理
 const Api = {
-  PostUsrMenus: new UriString('post-usr-menus'),
-  GetUsrMenus: new UriString('get-usr-menus'),
-  GetUsrMenusRouters: new UriString('get-usr-menus-routers'),
+  PostUsrMenus: new UriString('post-usr-api-menus'),
+  GetUsrMenus: new UriString('get-usr-api-menus'),
+  GetUsrMenusRouters: new UriString('get-usr-api-menus-routers'),
 
-  PutUsrMenusById: (id: number) => new UriString(`put-usr-menus-${id}`),
-  DeleteUsrMenusById: (id: number) => new UriString(`delete-usr-menus-${id}`),
-  GetUsrMenusMenutreeByRoleId: (roleId: number) => new UriString(`get-usr-menus-${roleId}-menutree`),
+  PutUsrMenusById: (id: number) => new UriString(`put-usr-api-menus-${id}`),
+  DeleteUsrMenusById: (id: number) => new UriString(`delete-usr-api-menus-${id}`),
+  GetUsrMenusMenutreeByRoleId: (roleId: number) => new UriString(`get-usr-api-menus-${roleId}-menutree`),
 };
 
 /**

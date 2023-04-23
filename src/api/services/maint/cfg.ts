@@ -11,12 +11,12 @@ import {
 
 // 配置管理
 const Api = {
-  PostMaintCfgs: new UriString('post-maint-cfgs'),
+  PostMaintCfgs: new UriString('post-maint-api-cfgs'),
 
-  PutMaintCfgsId: (id: number) => new UriString(`put-maint-cfgs-${id}`),
-  DeleteMaintCfgsId: (id: number) => new UriString(`delete-maint-cfgs-${id}`),
-  GetMaintCfgsId: (id: number) => new UriString(`get-maint-cfgs-${id}`),
-  GetMaintCfgsPage: (params: string) => new UriString(`get-maint-cfgs-page${params}`),
+  PutMaintCfgsId: (id: number) => new UriString(`put-maint-api-cfgs-${id}`),
+  DeleteMaintCfgsId: (id: number) => new UriString(`delete-maint-api-cfgs-${id}`),
+  GetMaintCfgsId: (id: number) => new UriString(`get-maint-api-cfgs-${id}`),
+  GetMaintCfgsPage: (params: string) => new UriString(`get-maint-api-cfgs-page${params}`),
 };
 
 /**

@@ -55,7 +55,7 @@ export interface getOrdOrdersIdResponse {
  * @returns
  */
 export interface getOrdOrdersPageParams {
-  Id: number;
+  Id?: number;
   PageIndex: number;
   PageSize: number;
 }
