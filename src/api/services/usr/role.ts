@@ -12,13 +12,13 @@ import { UriString } from '@/utils/string';
 
 // 角色管理
 const Api = {
-  PostUsrRoles: new UriString('post-usr-roles'),
-  GetUsrRolesPage: new UriString('get-usr-roles-page'),
+  PostUsrRoles: new UriString('post-usr-api-roles'),
+  GetUsrRolesPage: new UriString('get-usr-api-roles-page'),
 
-  PutUsrRolesId: (id: number) => new UriString(`put-usr-roles-${id}`),
-  DeleteUsrRolesId: (id: number) => new UriString(`delete-usr-roles-${id}`),
-  PutUsrRolesIdPermissions: (id: number) => new UriString(`put-usr-roles-${id}-permissons`),
-  GetUsrRolesUserIdRolestree: (userId: number) => new UriString(`get-usr-roles-${userId}-rolestree`),
+  PutUsrRolesId: (id: number) => new UriString(`put-usr-api-roles-${id}`),
+  DeleteUsrRolesId: (id: number) => new UriString(`delete-usr-api-roles-${id}`),
+  PutUsrRolesIdPermissions: (id: number) => new UriString(`put-usr-api-roles-${id}-permissons`),
+  GetUsrRolesUserIdRolestree: (userId: number) => new UriString(`get-usr-api-roles-${userId}-rolestree`),
 };
 
 /**

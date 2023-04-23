@@ -5,7 +5,7 @@ import { getMaintNoticesResponse } from '@/api/model/maint/noticeModel';
 
 // 通知管理
 const Api = {
-  GetMaintNotices: (title: string) => new UriString(`get-maint-notices?Title=${title}`),
+  GetMaintNotices: (title: string) => new UriString(`get-maint-api-notices?Title=${title}`),
 };
 /**
  * 获取通知消息列表

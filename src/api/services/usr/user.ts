@@ -16,17 +16,17 @@ import { UriString } from '@/utils/string';
 
 // 用户管理
 const Api = {
-  PostUsrUsers: new UriString('post-usr-users'),
+  PostUsrUsers: new UriString('post-usr-api-users'),
 
-  PutUsrUsersId: (id: number) => new UriString(`put-usr-users-${id}`),
-  DeleteUsrUsersId: (id: number) => new UriString(`delete-usr-users-${id}`),
-  PutUsrUsersIdRoles: (id: number) => new UriString(`put-usr-users-${id}-roles`),
-  PutUsrUsersIdStatus: (id: number) => new UriString(`put-usr-users-${id}-status`),
-  GetUsrUsersIdPermissions: (id: number) => new UriString(`get-usr-users-${id}-permissions`),
+  PutUsrUsersId: (id: number) => new UriString(`put-usr-api-users-${id}`),
+  DeleteUsrUsersId: (id: number) => new UriString(`delete-usr-api-users-${id}`),
+  PutUsrUsersIdRoles: (id: number) => new UriString(`put-usr-api-users-${id}-roles`),
+  PutUsrUsersIdStatus: (id: number) => new UriString(`put-usr-api-users-${id}-status`),
+  GetUsrUsersIdPermissions: (id: number) => new UriString(`get-usr-api-users-${id}-permissions`),
 
-  PutUsrUsersBatchStatus: new UriString('put-usr-users-batch-status'),
-  GetUsrUsersPage: new UriString('get-usr-users-page'),
-  GetUsrUsersCurrent: new UriString('get-usr-users-current'),
+  PutUsrUsersBatchStatus: new UriString('put-usr-api-users-batch-status'),
+  GetUsrUsersPage: new UriString('get-usr-api-users-page'),
+  GetUsrUsersCurrent: new UriString('get-usr-api-users-current'),
 };
 
 /**

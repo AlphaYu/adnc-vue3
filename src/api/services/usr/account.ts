@@ -12,11 +12,11 @@ import { UriString } from '@/utils/string';
 
 // 认证管理
 const Api = {
-  PostAuthSession: new UriString('post-auth-session'),
-  DeleteAuthSession: new UriString('delete-auth-session'),
-  PutAuthSession: new UriString('put-auth-session'),
-  GetAuthSession: new UriString('get-auth-session'),
-  PutAuthSessionPassword: new UriString('put-auth-session-password'),
+  PostAuthSession: new UriString('post-auth-api-session'),
+  DeleteAuthSession: new UriString('delete-auth-api-session'),
+  PutAuthSession: new UriString('put-auth-api-session'),
+  GetAuthSession: new UriString('get-auth-api-session'),
+  PutAuthSessionPassword: new UriString('put-auth-api-session-password'),
 };
 
 /**

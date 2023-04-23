@@ -14,10 +14,10 @@ import {
 
 // 日志管理
 const Api = {
-  GetMaintOpslogs: (params: string) => new UriString(`get-maint-opslogs${params}`),
-  GetMaintUsersOpslogs: (params: string) => new UriString(`get-maint-users-opslogs${params}`),
-  GetMaintLoginlogs: (params: string) => new UriString(`get-maint-loginlogs${params}`),
-  GetMaintNloglogs: (params: string) => new UriString(`get-maint-nloglogs${params}`),
+  GetMaintOpslogs: (params: string) => new UriString(`get-maint-api-opslogs${params}`),
+  GetMaintUsersOpslogs: (params: string) => new UriString(`get-maint-api-users-opslogs${params}`),
+  GetMaintLoginlogs: (params: string) => new UriString(`get-maint-api-loginlogs${params}`),
+  GetMaintNloglogs: (params: string) => new UriString(`get-maint-api-nloglogs${params}`),
 };
 /**
  * 查询操作日志

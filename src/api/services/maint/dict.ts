@@ -11,12 +11,12 @@ import {
 
 // 字典管理
 const Api = {
-  PostMaintDicts: new UriString('post-maint-dicts'),
+  PostMaintDicts: new UriString('post-maint-api-dicts'),
 
-  GetMaintDicts: (param: string) => new UriString(`get-maint-dicts${param}`),
-  PutMaintDictsId: (id: number) => new UriString(`put-maint-dicts-${id}`),
-  DeleteMaintDictsId: (id: number) => new UriString(`delete-maint-dicts-${id}`),
-  GetMaintDictsId: (id: number) => new UriString(`get-maint-dicts-${id}`),
+  GetMaintDicts: (param: string) => new UriString(`get-maint-api-dicts${param}`),
+  PutMaintDictsId: (id: number) => new UriString(`put-maint-api-dicts-${id}`),
+  DeleteMaintDictsId: (id: number) => new UriString(`delete-maint-api-dicts-${id}`),
+  GetMaintDictsId: (id: number) => new UriString(`get-maint-api-dicts-${id}`),
 };
 /**
  * 新增字典
