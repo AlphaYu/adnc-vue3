@@ -27,7 +27,7 @@ const toggleSettingPanel = () => {
 };
 
 const navToGitHub = () => {
-  window.open('https://github.com/AlphaYu/adnc-vue3');
+  window.open('https://github.com/tencent/tdesign-vue-next-starter');
 };
 
 const navToHelper = () => {

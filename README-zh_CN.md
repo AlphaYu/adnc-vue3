@@ -93,7 +93,7 @@ npm run stylelint:fix
 
 ### 如何贡献
 
-非常欢迎您的贡献！提交您的 [Issue](https://github.com/AlphaYu/adnc-vue3/issues/new/choose) 或者提交 [Pull Request](https://github.com/AlphaYu/adnc-vue3/pulls)。
+非常欢迎您的贡献！提交您的 [Issue](https://github.com/tencent/tdesign-vue-next-starter/issues/new/choose) 或者提交 [Pull Request](https://github.com/Tencent/tdesign-vue-next-starter/pulls)。
 
 #### 贡献提交规范
 
@@ -113,5 +113,5 @@ npm run stylelint:fix
 
 ### 开源协议
 
-TDesign 遵循 [MIT 协议](https://github.com/AlphaYu/adnc-vue3/LICENSE)。
+TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-vue-next-starter/LICENSE)。
 

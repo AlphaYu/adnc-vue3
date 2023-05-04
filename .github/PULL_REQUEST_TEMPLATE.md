@@ -1,5 +1,6 @@
 <!--
 首先，感谢你的贡献！😄
+请阅读并遵循 [TDesign 贡献指南](https://github.com/Tencent/tdesign/blob/main/docs/contributing.md)，填写以下 pull request 的信息。
 PR 在维护者审核通过后会合并，谢谢！
 -->
 
