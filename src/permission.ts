@@ -3,7 +3,7 @@ import NProgress from 'nprogress'; // progress bar
 import 'nprogress/nprogress.css'; // progress bar style
 
 import { RouteRecordRaw } from 'vue-router';
-import { getPermissionStore, getUserStore } from '@/store';
+import { getPermissionStore, useUsrStore } from '@/store';
 import router from '@/router';
 import { PAGE_NOT_FOUND_ROUTE } from '@/utils/route/constant';
 
@@ -14,21 +14,31 @@ router.beforeEach(async (to, from, next) => {
 
   const permissionStore = getPermissionStore();
   const { whiteListRouters } = permissionStore;
-
-  const userStore = getUserStore();
+  const userStore = useUsrStore().user;
   const { token } = userStore;
+
   if (token) {
     if (to.path === '/login') {
       next();
       return;
     }
+    console.log(token, 'token');
 
     const { asyncRoutes } = permissionStore;
 
     if (asyncRoutes && asyncRoutes.length === 0) {
       const routeList = await permissionStore.buildAsyncRoutes();
+      console.log(routeList, 'itemitem');
+
       routeList.forEach((item: RouteRecordRaw) => {
-        router.addRoute(item);
+        const route = {
+          path: item.path ?? '/',
+          redirect: item.redirect ?? '/index',
+          name: item.name ?? 'index',
+          component: () => item.component,
+        } as RouteRecordRaw;
+        console.log(route, 'itemitem');
+        router.addRoute(route);
       });
 
       if (to.name === PAGE_NOT_FOUND_ROUTE.name) {
@@ -73,7 +83,7 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach((to) => {
   if (to.path === '/login') {
-    const userStore = getUserStore();
+    const userStore = useUsrStore().user;
     const permissionStore = getPermissionStore();
 
     userStore.logout();

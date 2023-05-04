@@ -1,5 +1,5 @@
 <template>
-  <div :class="prefix + '-footer'">Copyright © 2021-{{ new Date().getFullYear() }} Tencent. All Rights Reserved</div>
+  <div :class="prefix + '-footer'">Copyright © 2021-{{ new Date().getFullYear() }} ANDC. All Rights Reservedd</div>
 </template>
 
 <script setup lang="ts">

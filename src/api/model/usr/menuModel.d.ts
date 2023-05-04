@@ -38,7 +38,7 @@ export interface getUsrMenusResponse {
   icon: string;
   code: string;
   pCode: string;
-  component: string;
+  component: Component | string;
   hidden: boolean;
   children?: string[] | getUsrMenusResponse[];
 }

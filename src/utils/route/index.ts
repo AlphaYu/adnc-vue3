@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 import { shallowRef } from 'vue';
-import { RouteItem, RouteMeta } from '@/api/model/permissionModel';
+// import { RouteItem, RouteMeta } from '@/api/model/_permissionModel';
 import {
   BLANK_LAYOUT,
   LAYOUT,
@@ -9,6 +9,7 @@ import {
   PARENT_LAYOUT,
   PAGE_NOT_FOUND_ROUTE,
 } from '@/utils/route/constant';
+import { getUsrMenusResponse } from '@/api/model/usr/menuModel';
 
 // vite 3+ support dynamic import from node_modules
 const iconsPath = import.meta.glob('../../../node_modules/tdesign-icons-vue-next/esm/components/*.js');
@@ -23,15 +24,18 @@ let dynamicViewsModules: Record<string, () => Promise<Recordable>>;
 
 // 动态从包内引入单个Icon
 async function getMenuIcon(iconName: string) {
-  const RenderIcon = iconsPath[`../../../node_modules/tdesign-icons-vue-next/esm/components/${iconName}.js`];
-
+  let RenderIcon = iconsPath[`../../../node_modules/tdesign-icons-vue-next/esm/components/${iconName}.js`];
+  if (RenderIcon === undefined) {
+    console.warn(iconName, '该图标在tdesign-icons模板库中不存在已默认替换为"view-list"');
+    RenderIcon = iconsPath[Object.keys(iconsPath).find((str) => str.includes('view-list'))];
+  }
   const Icon = await RenderIcon();
   // @ts-ignore
   return shallowRef(Icon.default);
 }
 
 // 动态引入路由组件
-function asyncImportRoute(routes: RouteItem[] | undefined) {
+function asyncImportRoute(routes: getUsrMenusResponse[] | string[] | string[]) {
   dynamicViewsModules = dynamicViewsModules || import.meta.glob('../../pages/**/*.vue');
   if (!routes) return;
 
@@ -49,7 +53,7 @@ function asyncImportRoute(routes: RouteItem[] | undefined) {
     } else if (name) {
       item.component = PARENT_LAYOUT();
     }
-    if (item.meta.icon) item.meta.icon = await getMenuIcon(item.meta.icon);
+    if (item.icon) item.icon = await getMenuIcon(item.icon);
 
     // eslint-disable-next-line no-unused-expressions
     children && asyncImportRoute(children);
@@ -81,7 +85,7 @@ function dynamicImport(dynamicViewsModules: Record<string, () => Promise<Recorda
 }
 
 // 将背景对象变成路由对象
-export function transformObjectToRoute<T = RouteItem>(routeList: RouteItem[]): T[] {
+export function transformObjectToRoute<T = getUsrMenusResponse>(routeList: getUsrMenusResponse[]): T[] {
   routeList.forEach(async (route) => {
     const component = route.component as string;
 
@@ -93,14 +97,14 @@ export function transformObjectToRoute<T = RouteItem>(routeList: RouteItem[]): T
         route.component = LAYOUT;
         route.name = `${route.name}Parent`;
         route.path = '';
-        route.meta = (route.meta || {}) as RouteMeta;
+        // route.meta = (route.meta || {}) as RouteMeta;
       }
     } else {
       throw new Error('component is undefined');
     }
     // eslint-disable-next-line no-unused-expressions
     route.children && asyncImportRoute(route.children);
-    if (route.meta.icon) route.meta.icon = await getMenuIcon(route.meta.icon);
+    if (route.icon) route.icon = await getMenuIcon(route.icon);
   });
 
   return [PAGE_NOT_FOUND_ROUTE, ...routeList] as unknown as T[];
